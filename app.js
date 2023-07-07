@@ -1,4 +1,3 @@
-const express = require('express')
 const { engine } = require('express-handlebars')
 const express = require('express')
 const app = express()
@@ -10,9 +9,19 @@ app.set('views', './views')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
- res.render('index')
+ res.redirect('/restaurants')
 })
 
+app.get('/restaurants', (req, res) => {
+  res.send('listing restaurant')
+})
+
+app.get('/restaurant/:id', (req, res) => {
+  const id = req.params.id
+  res.send(`read movie: ${id}`)
+})
+
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port http://localhost:${port}`)
 })
