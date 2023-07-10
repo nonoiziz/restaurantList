@@ -3,7 +3,6 @@ const express = require('express')
 const app = express()
 const port = 3000
 const restaurants = require('./public/jsons/restaurant.json').results
-const BASE_IMG_URL = ''
 
 app.engine('.hbs', engine({extname: '.hbs'}))
 app.set('view engine', '.hbs')
@@ -15,7 +14,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants', (req, res) => {
-  res.render('index', {restaurants: restaurants})
+  const keyword = req.query.search
+  const matchedRestaurants = keyword ? restaurants.filter((restaurant) => 
+    Object.values(restaurant).some((property) => {
+      if (typeof property === 'string') {
+  return (property.toLowerCase().includes(keyword.toLowerCase()) && (property === restaurant.name || property === restaurant.category))}
+  return false
+      })
+    ) : restaurants
+    
+
+  res.render('index', {restaurants: matchedRestaurants, keyword})
 })
 
 app.get('/restaurant/:id', (req, res) => {
