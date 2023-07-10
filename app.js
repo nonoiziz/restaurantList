@@ -2,6 +2,8 @@ const { engine } = require('express-handlebars')
 const express = require('express')
 const app = express()
 const port = 3000
+const restaurants = require('./public/jsons/restaurant.json').results
+const BASE_IMG_URL = ''
 
 app.engine('.hbs', engine({extname: '.hbs'}))
 app.set('view engine', '.hbs')
@@ -13,12 +15,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants', (req, res) => {
-  res.render('index')
+  res.render('index', {restaurants: restaurants})
 })
 
 app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
-  res.send(`read movie: ${id}`)
+  res.render(`show${id}`)
 })
 
 
