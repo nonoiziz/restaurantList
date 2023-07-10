@@ -18,7 +18,7 @@ app.get('/restaurants', (req, res) => {
   const matchedRestaurants = keyword ? restaurants.filter((restaurant) => 
     Object.values(restaurant).some((property) => {
       if (typeof property === 'string') {
-  return (property.toLowerCase().includes(keyword.toLowerCase()) && (property === restaurant.name || property === restaurant.category))}
+  return (property.toLowerCase().includes(keyword.toLowerCase()) && (property === restaurant.name || property === restaurant.category || property === restaurant.name_en))}
   return false
       })
     ) : restaurants

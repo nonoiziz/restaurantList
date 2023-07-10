@@ -1,15 +1,17 @@
-# Movie List
-A simple web application for movie fanatic
+# Restaurants List
+
+我最愛的餐廳清單
 
 ## Features
-- listing movies from movie api
-- searching movies by title
-- add movies to your favorite list
-- manage your favorite list
+
+- 點擊餐廳，你可以看到更詳細的餐廳資料（包括：電話、地址、與描述）
+- 搜尋餐廳名稱或餐廳類別
+
+## 未來更新方向
+
+- 新增屬於你自己的餐廳清單
+- 管理你的餐廳清單
 
 ### Searching
-type the title of the movies in search bar
-### Favorite List
-In index page, press the `+` button on the movie to keep it into favorite list.
-You can checkout the favorite list in `favorite.html`
-press `x` to remove it from favorite list
+
+輸入餐廳的中文或英文名字或者餐廳的類型
